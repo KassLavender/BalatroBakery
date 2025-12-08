@@ -1255,6 +1255,8 @@ function Split(str, delim)
    return result
 end
 
+local MAX_NUM
+
 function parse_hyper_e(num)
     local split_array = num:sub(2)
     local arr = {}
@@ -1275,18 +1277,20 @@ function parse_hyper_e(num)
                 end
             else
                 -- Triple hash is unsupported. Bail.
-                return parse_hyper_e("e10#10##10000"), true
+                return MAX_NUM, true
             end
             current_run = 0
             i = i + 1
             if i > 10010 then
                 -- Number is too big to fit in memory. Bail.
-                return parse_hyper_e("e10#10##10000"), true
+                return MAX_NUM, true
             end
         end
     end
     return setmetatable({array = arr, sign = 1}, OmegaMeta)
 end
+
+MAX_NUM = parse_hyper_e("e10#10##10000")
 
 Bakery_API.Joker {
     key = "Lua",
