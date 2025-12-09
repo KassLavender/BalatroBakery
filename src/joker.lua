@@ -1315,8 +1315,12 @@ Bakery_API.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                x_mult = card.ability.extra.x_mult,
                 func = function()
+                    mult = mult * card.ability.extra.x_mult
+                    update_hand_text({ delay = 0 }, { chips = hand_chips, mult = mult })
+                    card_eval_status_text(
+                        card, 'x_mult', card.ability.extra.x_mult, percent
+                    )
                     local too_big
                     if type(mult) == 'table' and (
                         (mult.isFinite and not mult:isFinite())
