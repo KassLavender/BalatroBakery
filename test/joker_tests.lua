@@ -2226,7 +2226,7 @@ Balatest.TestPlay {
         Balatest.play_hand { '2S' }
     end,
     assert = function()
-        Balatest.assert_chips(7e152)
+        Balatest.assert_chips(7 * 1e152) -- Explicitly spell this multiplication to avoid precision issues
     end
 }
 if Talisman then
