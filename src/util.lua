@@ -744,37 +744,45 @@ Bakery_API.guard(function()
         if blind and (blind.artist or blind.coder or blind.idea) then
             self.loc_debuff_lines[#self.loc_debuff_lines + 1] = ""
             if blind.artist == blind.coder and blind.coder == blind.idea then
-                local creator = Bakery_API.contributors[blind.artist]
-                self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
-                    type = 'variable',
-                    key = 'v_Bakery_by',
-                    vars = { creator.name }
-                }
+                if Bakery_API.contributors[blind.artist] then
+                    local creator = Bakery_API.contributors[blind.artist]
+                    self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
+                        type = 'variable',
+                        key = 'v_Bakery_by',
+                        vars = { creator.name }
+                    }
                 return
+                end
             end
             if blind.artist then
-                local artist = Bakery_API.contributors[blind.artist]
-                self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
-                    type = 'variable',
-                    key = 'v_Bakery_artist',
-                    vars = { artist.name }
-                }
+                if Bakery_API.contributors[blind.artist] then
+                    local artist = Bakery_API.contributors[blind.artist]
+                    self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
+                        type = 'variable',
+                        key = 'v_Bakery_artist',
+                        vars = { artist.name }
+                    }
+                end
             end
             if blind.coder then
-                local coder = Bakery_API.contributors[blind.coder]
-                self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
-                    type = 'variable',
-                    key = 'v_Bakery_coder',
-                    vars = { coder.name }
-                }
+                if Bakery_API.contributors[blind.coder] then
+                    local coder = Bakery_API.contributors[blind.coder]
+                    self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
+                        type = 'variable',
+                        key = 'v_Bakery_coder',
+                        vars = { coder.name }
+                    }
+                end
             end
             if blind.idea then
-                local idea = Bakery_API.contributors[blind.idea]
-                self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
-                    type = 'variable',
-                    key = 'v_Bakery_idea',
-                    vars = { idea.name }
-                }
+                if Bakery_API.contributors[blind.idea] then
+                    local idea = Bakery_API.contributors[blind.idea]
+                    self.loc_debuff_lines[#self.loc_debuff_lines + 1] = localize {
+                        type = 'variable',
+                        key = 'v_Bakery_idea',
+                        vars = { idea.name }
+                    }
+                end
             end
         end
     end
