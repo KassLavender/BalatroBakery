@@ -793,10 +793,8 @@ Bakery_API.guard(function()
         local txt = ret.nodes[2].nodes[1].nodes[4]
         if txt and (blind.artist or blind.coder or blind.idea) then
             local function make(kind, contrib)
-                if contrib.name then
-                    txt.nodes[#txt.nodes + 1] =
+                txt.nodes[#txt.nodes + 1] =
                 { n = G.UIT.R, config = { align = "cm" }, colour = contrib.bg, nodes = { { n = G.UIT.T, config = { text = localize { type = 'variable', key = kind, vars = { contrib.name } }, scale = 0.2, shadow = true, colour = contrib.fg } } } }
-                end
             end
             if blind.artist == blind.coder and blind.coder == blind.idea and Bakery_API.contributors[blind.artist] then
                 make("v_Bakery_by", Bakery_API.contributors[blind.artist])
